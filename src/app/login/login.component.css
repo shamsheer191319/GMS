@@ -1,0 +1,39 @@
+.login {
+    padding-top: 110px;
+    color: rgb(185, 89, 236);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.main-div {
+    position: relative;
+    height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.form-div {
+    position: absolute;
+    height: 400px;
+    width: 320px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+}
+
+.form-control {
+    border: 2px solid rgba(0, 0, 0, 0.18);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.button-red {
+    margin: auto;
+    color: #fff;
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(to right, rgb(181, 178, 182), rgb(181, 178, 182));
+}

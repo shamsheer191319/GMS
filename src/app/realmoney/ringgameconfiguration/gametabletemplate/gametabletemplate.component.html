@@ -1,0 +1,79 @@
+<app-ringgameconfiguration></app-ringgameconfiguration>
+
+
+
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputGame">Game Type</label>
+            <select id="inputGame" class="form-control">
+      <option selected>Choose...</option>
+      <option>1</option>
+      <option>11</option>
+      <option>111</option>
+      <option>1111</option>
+    </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2 ">
+            <label for="inputLimit">Limit Type</label>
+            <select id="inputLimit" class="form-control">
+      <option selected>Choose...</option>
+      <option>1</option>
+      <option>11</option>
+      <option>111</option>
+      <option>1111</option>
+    </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="inputStakes">Lower Stakes</label>
+            <input (keypress)="Stakes($event)" type="text" id="inputStakes">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputStakes">Upper Stakes</label>
+            <input (keypress)="Stakes($event)" type="text" id="inputStakes">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputBuyin">Max Buy-In</label>
+            <input type="text" id="inputBuyin">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputBuyin">Min Buy-In</label>
+            <input type="text" id="inputBuyin">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2 ">
+            <label for="inputLimit">Seating Capacity</label>
+            <select id="inputLimit" class="form-control">
+      <option selected>Choose...</option>
+      <option>1</option>
+      <option>11</option>
+      <option>111</option>
+      <option>1111</option>
+    </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputBet">Bet Timer</label>
+            <select id="inputLimit" class="form-control">
+                <option selected>Choose...</option>
+                <option>1</option>
+                <option>11</option>
+                <option>111</option>
+                <option>1111</option>
+              </select>
+        </div>
+    </div>
+
+    <button type="save" class="btn btn-primary ">Save</button>
+    <button type="reset" class="btn btn-primary">Reset</button>
+
+
+</form>
