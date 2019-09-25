@@ -16,6 +16,18 @@
         </div>
     </div>
     <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="inputGame">Game Variant</label>
+            <select id="inputGame" class="form-control">
+      <option selected>Choose...</option>
+      <option>1</option>
+      <option>11</option>
+      <option>111</option>
+      <option>1111</option>
+    </select>
+        </div>
+    </div>
+    <div class="form-row">
         <div class="form-group col-md-2 ">
             <label for="inputLimit">Limit Type</label>
             <select id="inputLimit" class="form-control">
@@ -39,12 +51,12 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-2">
-            <label for="inputBuyin">Max Buy-In</label>
-            <input type="text" id="inputBuyin">
+            <label for="inputBuyin">Min Buy-In</label>
+            <input (keypress)="Buyin($event)" type="text" id="inputBuyin">
         </div>
         <div class="form-group col-md-2">
-            <label for="inputBuyin">Min Buy-In</label>
-            <input type="text" id="inputBuyin">
+            <label for="inputBuyin">Max Buy-In</label>
+            <input (keypress)="Buyin($event)" type="text" id="inputBuyin">
         </div>
     </div>
     <div class="form-row">
@@ -62,13 +74,36 @@
     <div class="form-row">
         <div class="form-group col-md-2">
             <label for="inputBet">Bet Timer</label>
+            <input type="text" id="inputBet">
+        </div>
+        <div class="form-group col-md-2">
+
+            <input type="text" id="inputBet">
+
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2 ">
+            <label for="inputLimit">Status</label>
             <select id="inputLimit" class="form-control">
-                <option selected>Choose...</option>
-                <option>1</option>
-                <option>11</option>
-                <option>111</option>
-                <option>1111</option>
-              </select>
+      <option selected>Choose...</option>
+      <option>1</option>
+      <option>11</option>
+      <option>111</option>
+      <option>1111</option>
+    </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2 ">
+            <label for="inputLimit">Gametable Type</label>
+            <select id="inputLimit" class="form-control">
+      <option selected>Choose...</option>
+      <option>1</option>
+      <option>11</option>
+      <option>111</option>
+      <option>1111</option>
+    </select>
         </div>
     </div>
 

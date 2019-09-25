@@ -27,19 +27,36 @@ export class LoginComponent implements OnInit {
     //   this.login = data;
     // });
     this.loginForm = this.formBuilder.group({
-			username: ['', Validators.required],
-			password: ['', Validators.required]
-		});
+        username: ['', Validators.required],
+        password: ['', Validators.required]
+	  });
   }
 
   login(data) {
+    console.log(data)
+    // this.router.navigate(['/profile']);
 
-   if (this.loginservice.authenticate(this.username, this.password)) {
-      console.log("ererer");
-      this.router.navigate(['/profile']);
-      this.invalidLogin = false;
-    } else {
-      this.invalidLogin = true;
-  }
+
+    this.loginservice.authenticate(this.username, this.password)
+    .subscribe((result) => {
+      if(result['status'] == 'OK'){
+          this.router.navigate(['/profile']);
+        }
+    }, err => {
+          console.log('Error', err);
+        });
+
+    // console.log("dsfsdfsd");
+    // console.log(res);
+    // if(res['status'] == 200){
+    //   this.router.navigate(['/profile']);
+    // }
+
+
+
+
+
+
+    }
 }
-}
+

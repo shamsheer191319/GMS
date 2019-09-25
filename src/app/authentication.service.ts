@@ -16,7 +16,7 @@ export class AuthenticationService {
 
   // end point url
 
-  // baseUrl = 'http://localhost:3000/';
+   baseUrl = 'http://192.168.100.168:9999';
 
 
 
@@ -29,29 +29,29 @@ export class AuthenticationService {
 
   authenticate(username, password) {
 
-    if (username === 'admin' && password === 'admin') {
-      sessionStorage.setItem('username', username);
-      console.log("in login");
-      // here will be code to call http://192.168.100.168:9999/login
 
-      const fd = new FormData();
-		fd.append('username', username);
+    const fd = new FormData();
+    fd.append('username', username);
     fd.append('password', password);
 
-       this.httpClient.post(`${this.apiURL}/login`, fd, {}).subscribe(data => {
-        console.log('POST Request is successful ', data);
-      }, err => {
-        console.log('Error', err); });
 
+    // return this.httpClient.post(`${this.apiURL}/login`, fd, {});
+    return this.httpClient.post(`${this.apiURL}/login`,{ userName: username, password: password});
 
+    // .subscribe(data => {
 
+    //   console.log('POST Request is successful ', data);
+    //   return data;
 
+    // }, err => {
+    //     console.log('Error', err);
+    //   });
 
-    } else {
-      return false;
-
-    }
-
+  }
+  getMethod() {
+    return this.httpClient.get(`${this.baseUrl}/template/metadata`).subscribe((res) => {
+      console.log(res);
+  });
   }
 
   isUserLoggedIn() {
