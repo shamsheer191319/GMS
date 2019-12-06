@@ -2,9 +2,27 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
 
-## Development server
+## Install npm packages
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Navigate to the root folder of application i.e. where package.json is present.
+Install npm packages described in the `package.json` as below:
+
+```shell
+npm install
+```
+## Start Application
+
+Run the following command in the application root directory:
+```shell
+npm start
+```
+
+The application is running now, you may check it at the URL `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+Shut it down manually with `Ctrl-C`.
+
+You're ready to work with your application.
+
 
 ## Code scaffolding
 

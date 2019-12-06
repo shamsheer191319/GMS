@@ -7,11 +7,11 @@
         transition: margin .25s ease-out;
         float: left;
     }
-    
+
     #sidebar-wrapper .list-group {
         width: 15rem;
     }
-    
+
     @media (min-width: 768px) {
         #sidebar-wrapper {
             margin-left: 0;
@@ -22,5 +22,8 @@
         }
         #wrapper.toggled #sidebar-wrapper {
             margin-left: -15rem;
+        }
+        .p-4 {
+            padding: 1rem!important;
         }
     }

@@ -1,0 +1,225 @@
+<app-ringgameconfiguration></app-ringgameconfiguration>
+
+<div class="col-12 p-5 main-div">
+    <form [formGroup]="templateForm" (ngSubmit)="template(templateForm.value)">
+        <div class="col-8">
+
+            <input type="hidden" name="tableTypes" value="tableTypeId">
+
+            <div class="form-row form-group">
+                <div class=" col-md-3">
+                    <label for="gameTypes">Game Type</label>
+                </div>
+                <div class="col-md-9">
+                    <select id="gameTypes" (change)="onChangeGameType($event.target.value)" class="form-control {{submit && templateForm.controls['gameTypeId'].errors && templateForm.controls['gameTypeId'].errors.required ? 'required-highlight' : ''}}" name='gameTypes' formControlName='gameTypeId'>
+
+                        <option [ngValue]=null>Select any Game types</option>
+                        <option *ngFor="let list of gameTypes" [value]="list.gameTypeId">{{list.typeName}}</option>
+
+                    </select>
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['gameTypeId'].errors && templateForm.controls['gameTypeId'].errors.required">
+                        <span class="form_error_class">* Game Types required</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-group">
+                <div class=" col-md-3">
+                    <label for="gameSubTypes">Game Sub-type</label>
+                </div>
+                <div class="col-md-9">
+                    <select id="gameSubTypes" class="form-control {{submit && templateForm.controls['gameSubTypeId'].errors && templateForm.controls['gameSubTypeId'].errors.required ? 'required-highlight' : ''}}" name='gameSubTypes' formControlName='gameSubTypeId'>
+
+                        <option [ngValue]=null>Select any Game Sub-types</option>
+                        <option *ngFor="let list of selectedSubGameTypes" [value]="list.gameSubTypeId">{{list.typeName}}
+                        </option>
+
+                    </select>
+
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['gameSubTypeId'].errors && templateForm.controls['gameSubTypeId'].errors.required">
+                        <span class="form_error_class">* Game Sub-type required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class=" col-md-3 ">
+                    <label for="limittypes">Limit Type</label>
+                </div>
+                <div class="col-md-9">
+                    <select id="limittypes" class="form-control {{submit && templateForm.controls['limitId'].errors && templateForm.controls['limitId'].errors.required ? 'required-highlight' : ''}}" name='limittypes' formControlName='limitId'>
+                        <option [ngValue]=null>Select any Limit Types</option>
+                        <option *ngFor="let list of limitTypes" [value]="list.limitId">{{list.limitName}}
+                        </option>
+
+
+                    </select>
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['limitId'].errors && templateForm.controls['limitId'].errors.required">
+                        <span class="form_error_class">* Limit Type required</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class=" col-md-3">
+                    <label for="inputStakes">Lower Stakes</label>
+                </div>
+                <div class="col-md-3">
+                    <input (keypress)="Stakes($event)" type="text" [(ngModel)]="lowerStake" (input)="calculate($event.target.value)" class="form-control {{submit && templateForm.controls['lowerStake'].errors && templateForm.controls['lowerStake'].errors.required ? 'required-highlight' : ''}}"
+                        id="lowerStake" formControlName='lowerStake'>
+
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['lowerStake'].errors && templateForm.controls['lowerStake'].errors.required">
+                        <span class="form_error_class">* Lower Stakes required </span>
+                    </div>
+                </div>
+
+                <div class=" col-md-3">
+                    <label for="inputStakes">Upper Stakes</label>
+                </div>
+                <div class="col-md-3">
+                    <input (keypress)="Stakes($event)" type="text" [(ngModel)]="upperStake" class="form-control {{submit && templateForm.controls['upperStake'].errors && templateForm.controls['upperStake'].errors.required ? 'required-highlight' : ''}}" id="upperStake" formControlName='upperStake'>
+
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['upperStake'].errors && templateForm.controls['upperStake'].errors.required">
+                        <span class="form_error_class">* Upper Stakes required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class=" col-md-3">
+                    <label for="inputBuyin">Min Buy-In</label>
+                </div>
+                <div class="col-md-3">
+                    <input (keypress)="Buyin($event)" type="text" [(ngModel)]="minBuyIn" class="form-control {{submit && templateForm.controls['minBuyIn'].errors && templateForm.controls['minBuyIn'].errors.required ? 'required-highlight' : ''}}" id="minBuyIn" formControlName='minBuyIn'>
+
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['minBuyIn'].errors && templateForm.controls['minBuyIn'].errors.required">
+                        <span class="form_error_class">* Min Buy-In required</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputBuyin">Max Buy-In</label>
+                </div>
+                <div class="col-md-3">
+                    <input (keypress)="Buyin($event)" type="text" [(ngModel)]="maxBuyIn" class="form-control {{submit && templateForm.controls['maxBuyIn'].errors && templateForm.controls['maxBuyIn'].errors.required ? 'required-highlight' : ''}}" id="maxBuyIn" formControlName='maxBuyIn'>
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['maxBuyIn'].errors && templateForm.controls['maxBuyIn'].errors.required">
+                        <span class="form_error_class">* Max Buy-In required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class=" col-md-3 ">
+                    <label for="seatingCapacities">Seating Capacity</label>
+                </div>
+                <div class=" col-md-9 ">
+                    <select id="seatingCapacities" class="form-control {{submit && templateForm.controls['seatCapacityId'].errors && templateForm.controls['seatCapacityId'].errors.required ? 'required-highlight' : ''}}" name='seatingCapacities' formControlName='seatCapacityId'>
+                        <option [ngValue]=null>Select any Seating Capacity</option>
+                        <option *ngFor="let list of seatingCapacity" [value]="list.seatCapacityId">
+                            {{list.capacity}}
+                        </option>
+
+
+
+                    </select>
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['seatCapacityId'].errors && templateForm.controls['seatCapacityId'].errors.required">
+                        <span class="form_error_class">* Seating Capacity required</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row form-group">
+                <div class=" col-md-3 ">
+                    <label for="bettimer">Bet Timer</label>
+                </div>
+                <div class=" col-md-9 ">
+                    <select id="timerId" class="form-control {{submit && templateForm.controls['timerId'].errors && templateForm.controls['timerId'].errors.required ? 'required-highlight' : ''}}" name='timerId' formControlName='timerId'>
+                        <option [ngValue]=null>Select any BetTimer</option>
+
+                        <option *ngFor="let list of betTimers" [value]="list.timerId">{{list.timerName}} (
+                            {{ list.silentTimer }} + {{ list.countDownTimer }} )</option>
+
+                    </select>
+                    <div class="form_error_blk" *ngIf="submit && templateForm.controls['timerId'].errors && templateForm.controls['timerId'].errors.required">
+                        <span class="form_error_class">* Bet Timer required</span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-row form-group">
+                        <div class=" col-md-3 ">
+                            <label for="bettimer">Silent Timer</label>
+                        </div>
+
+                        <div class=" col-md ">
+                            <select id="statusId"
+                                class="form-control {{submit && templateForm.controls['timerId'].errors && templateForm.controls['timerId'].errors.required ? 'required-highlight' : ''}}"
+                                name='timerId' formControlName='timerId'>
+                                <option [ngValue]=null>Select silent Timer</option>
+                                <option *ngFor="let list of betTimers" [value]="list.timerId">{{list.timer}}
+                                </option>
+
+                            </select>
+
+                            <div class="form_error_blk"
+                                *ngIf="submit && templateForm.controls['timerId'].errors && templateForm.controls['timerId'].errors.required">
+                                <span class="form_error_class">* silent Timer required</span>
+                            </div>
+                        </div>
+                    </div> -->
+            <!-- <div class=" col-md">
+                        <label for="bettimer">Countdown Timer</label>
+                    </div>
+
+                    <div class=" col-md">
+                        <select id="statusId"
+                            class="form-control {{submit && templateForm.controls['timerId'].errors && templateForm.controls['timerId'].errors.required ? 'required-highlight' : ''}}"
+                            name='timerId' formControlName='timerId'>
+                            <option [ngValue]=null>Select countdown Timer</option>
+
+                            <option *ngFor="let list of betTimers" [value]="list.timerId">{{list.timer}}</option>
+
+                        </select>
+                        <div class="form_error_blk"
+                            *ngIf="submit && templateForm.controls['timerId'].errors && templateForm.controls['timerId'].errors.required">
+                            <span class="form_error_class">* countdown Timer required</span>
+                        </div>
+                    </div>
+                </div> -->
+
+
+            <!-- <div class="form-row form-group">
+            <div class=" col-md-3 ">
+                <label for="status">Status</label>
+            </div>
+            <div class=" col-md-9 ">
+
+                <select id="statusId" class="form-control {{submit && templateForm.controls['statusId'].errors && templateForm.controls['statusId'].errors.required ? 'required-highlight' : ''}}" name='statusId' formControlName='statusId'>
+                        <option [ngValue]=null>Select any Status</option>
+                    <option *ngFor="let list of templateStatuses" [value]="list.statusId">{{list.statusName}}
+                    </option>
+
+
+                </select>
+                <div class="form_error_blk"
+                    *ngIf="submit && templateForm.controls['statusId'].errors && templateForm.controls['statusId'].errors.required">
+                    <span class="form_error_class">* Status required</span>
+                </div>
+            </div>
+        </div> -->
+
+
+            <div class="form-row form-group">
+
+                <div class=" col-md-6 text-right">
+
+                    <button type="submit" [disabled]="templateForm.invalid || submit" class="btn btn-primary" (click)="open(templateForm)">Save</button>
+                </div>
+
+                <div class=" col-md-6 text-left ">
+                    <button type="reset " class="btn btn-primary " value="all-clear " (click)="resetForm(templateForm) ">Reset</button>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </form>
+</div>

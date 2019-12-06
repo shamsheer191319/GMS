@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {  } from "../app/realmoney/ringgameconfiguration/gametabletemplate/gametabletemplate.component";
+import {  } from '../app/realmoney/ringgameconfiguration/gametabletemplate/gametabletemplate.component';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', Observe: 'response' })
 };
 
 @Injectable({
@@ -13,6 +13,10 @@ const httpOptions = {
 export class AuthenticationService {
 
   apiURL = 'http://192.168.100.168:9999';
+
+  // apiURL = 'http://192.168.46.49:9999';
+
+
 
   // end point url
 
@@ -36,7 +40,9 @@ export class AuthenticationService {
 
 
     // return this.httpClient.post(`${this.apiURL}/login`, fd, {});
-    return this.httpClient.post(`${this.apiURL}/login`,{ userName: username, password: password});
+
+     this.httpClient.post(`${this.apiURL}/login`, {userName: username, password: password });
+
 
     // .subscribe(data => {
 
@@ -51,6 +57,7 @@ export class AuthenticationService {
   getMethod() {
     return this.httpClient.get(`${this.baseUrl}/template/metadata`).subscribe((res) => {
       console.log(res);
+
   });
   }
 
